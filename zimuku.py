@@ -101,13 +101,14 @@ class ZimukuDownloader(object):
                             'lan': type_score,
                             'link': self.site_url + sub_a.attrs['href']
                         }
+                        print(sub_dict)
                 else:  # 电影 TODO
                     pass
 
                 if len(sub_dict) >= sub_num:
                     break
-
         print(sub_dict)
+        return sub_dict
 
 
 

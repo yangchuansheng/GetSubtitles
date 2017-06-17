@@ -12,6 +12,7 @@ from traceback import format_exc
 from requests import exceptions
 from __init__ import __version__
 from subhd import SubHDDownloader
+from zimuku import ZimukuDownloader
 
 
 class GetSubtitles(object):
@@ -30,6 +31,7 @@ class GetSubtitles(object):
         self.s_error = ''
         self.f_error = ''
         self.subhd = SubHDDownloader()
+        self.zimuku = ZimukuDownloader()
         self.failed_list = []  # [{'name', 'path', 'error', 'trace_back'}
 
     def get_path_name(self, args):
@@ -249,7 +251,7 @@ class GetSubtitles(object):
                 continue
             try:
                 keywords, info_dict = self.sort_keyword(one_video)
-                sub_dict = self.subhd.get_subtitles(keywords, sub_num=self.sub_num)
+                sub_dict = self.zimuku.get_subtitles(keywords, sub_num=self.sub_num)
                 if len(sub_dict) == 0:
                     self.s_error += 'no search results'
                     continue
